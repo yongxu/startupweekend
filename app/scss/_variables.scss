@@ -1,0 +1,102 @@
+/*------------------------------------*\
+    This file is based on the _variables.scss file from google/material-design-lite
+    https://github.com/google/material-design-lite
+\*------------------------------------*/
+
+/* ==========  TYPOGRAPHY  ========== */
+
+/* We're splitting fonts into "preferred" and "performance" in order to optimize
+   page loading. For important text, such as the body, we want it to load
+   immediately and not wait for the web font load, whereas for other sections,
+   such as headers and titles, we're OK with things taking a bit longer to load.
+   We do have some optional classes and parameters in the mixins, in case you
+   definitely want to make sure you're using the preferred font and don't mind
+   the performance hit.
+   We should be able to improve on this once CSS Font Loading L3 becomes more
+   widely available.
+*/
+$preferred_font: 'Roboto', 'Helvetica', 'Arial', sans-serif !default;
+$performance_font: 'Helvetica', 'Arial', sans-serif !default;
+
+/* ==========  Color & Themes  ========== */
+
+// Use color primarily for emphasis. Choose colors that fit with
+// your brand and provide good contrast between visual components.
+$color-primary: $palette-blue-500 !default;
+$color-primary-dark: $palette-blue-700 !default;
+$color-accent: $palette-pink-A200 !default;
+
+// Our primary is dark, so use $color-dark-contrast for overlaid text.
+$color-primary-contrast: $color-dark-contrast !default;
+// Our accent is dark, so use $color-dark-contrast for overlaid text.
+$color-accent-contrast: $color-dark-contrast !default;
+
+/* ==========  Typography  ========== */
+
+// We use the following default color styles: text-color-primary and
+// text-color-secondary. For light themes, use text-color-primary-inverse
+// and text-color-secondary-inverse.
+
+$text-color-primary: unquote("rgba(#{$color-black}, 0.87)") !default;
+$text-link-color: unquote("rgb(#{$color-accent})") !default;
+
+/* ==========  Layout  ========== */
+
+// Header
+$layout-header-bg-color: unquote("rgb(#{$color-primary})") !default;
+$layout-header-text-color: unquote("rgb(#{$color-primary-contrast})") !default;
+
+// Dimensions
+$layout-header-icon-size: 32px;
+$layout-screen-size-threshold: 1024px;
+$layout-header-icon-margin: 24px;
+$layout-drawer-button-mobile-size: 32px;
+$layout-drawer-button-desktop-size: 48px;
+
+$layout-header-mobile-row-height: 56px;
+$layout-mobile-header-height: $layout-header-mobile-row-height;
+$layout-header-desktop-row-height: 64px;
+$layout-desktop-header-height: $layout-header-desktop-row-height;
+
+$layout-header-desktop-baseline: 80px;
+$layout-header-mobile-baseline: 72px;
+$layout-header-mobile-indent: 16px;
+$layout-header-desktop-indent: 40px;
+
+/* ANIMATION */
+$animation-curve-fast-out-slow-in: cubic-bezier(0.4, 0, 0.2, 1) !default;
+$animation-curve-linear-out-slow-in: cubic-bezier(0, 0, 0.2, 1) !default;
+$animation-curve-fast-out-linear-in: cubic-bezier(0.4, 0, 1, 1) !default;
+
+$animation-curve-default: $animation-curve-fast-out-slow-in !default;
+
+/* SHADOWS */
+
+$shadow-key-umbra-opacity: 0.2;
+$shadow-key-penumbra-opacity: 0.14;
+$shadow-ambient-shadow-opacity: 0.12;
+
+/* GRID */
+
+$grid-desktop-columns: 12 !default;
+$grid-desktop-gutter: 16px !default;
+$grid-desktop-margin: 16px !default;
+
+$grid-desktop-breakpoint: 840px !default;
+
+$grid-tablet-columns: 8 !default;
+$grid-tablet-gutter: $grid-desktop-gutter !default;
+$grid-tablet-margin: $grid-desktop-margin !default;
+
+$grid-tablet-breakpoint: 480px !default;
+
+$grid-phone-columns: 4 !default;
+$grid-phone-gutter: $grid-desktop-gutter !default;
+$grid-phone-margin: $grid-desktop-margin !default;
+
+$grid-cell-default-columns: $grid-phone-columns !default;
+
+
+$app-desktop-padding: 24px !default;
+$app-tablet-padding: 16px !default;
+$app-phone-padding: 12px !default;

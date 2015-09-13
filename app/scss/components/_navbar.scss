@@ -1,0 +1,43 @@
+.navbar-link{
+    width:100px;
+    text-align: center;
+    padding: 25px 20px;
+    text-decoration: none;
+    margin: auto;  /* Magic! */
+    position:relative; //this lets us then position the ball
+    color: rgba(255,255,255,.3);
+    transition: all .3s linear;
+    &:hover,
+    &.active{
+      color: #fff; //links have an "active" class or hover change to white
+    }
+}
+
+.navbar-link_container{
+    margin-right: 20px;
+
+
+    @media (max-width: $grid-tablet-breakpoint - 1) {
+        display: none;
+    }
+}
+.navbar-menu__header{
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: $layout-desktop-header-height;
+
+	@media screen and (max-width: $layout-screen-size-threshold) {
+	  height: $layout-mobile-header-height;
+	}
+
+
+}
+
+
+@media (max-width: 480px) {
+  .navbar-mobile-title {
+    display: none !important;
+  }
+}

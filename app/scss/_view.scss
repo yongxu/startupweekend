@@ -1,0 +1,19 @@
+.view--content{
+  padding: 80px 56px;
+  background-color: unquote("rgb(#{$color-white})");
+  color:unquote("rgb(#{$palette-grey-900})");
+  width: 100%;
+  max-width: 960px;
+  @include shadow-2dp();
+}
+
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+

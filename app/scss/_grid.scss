@@ -1,0 +1,163 @@
+
+.grid {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0 auto 0 auto;
+  align-items: stretch;
+
+  &.grid--no-spacing {
+    padding: 0;
+  }
+}
+
+.cell {
+  box-sizing: border-box;
+}
+
+
+.cell--top {
+  align-self: flex-start;
+}
+
+.cell--middle {
+  align-self: center;
+}
+
+.cell--bottom {
+  align-self: flex-end;
+}
+
+.cell--stretch {
+  align-self: stretch;
+}
+
+.grid.grid--no-spacing > .cell {
+  margin: 0;
+}
+
+
+// Mixins for width calculation.
+@mixin partial-size($size, $columns, $gutter) {
+  width: calc(#{(($size / $columns) * 100)+"%"} - #{$gutter});
+
+  .grid--no-spacing > & {
+    width: #{(($size / $columns) * 100)+"%"};
+  }
+}
+
+@mixin full-size($gutter) {
+  @include partial-size(1, 1, $gutter);
+}
+
+
+
+////////// Phone //////////
+
+@media (max-width: $grid-tablet-breakpoint - 1) {
+  .grid {
+    padding: $grid-phone-margin - ($grid-phone-gutter / 2);
+  }
+
+  .cell {
+    margin: $grid-phone-gutter / 2;
+    @include partial-size($grid-cell-default-columns, $grid-phone-columns,
+        $grid-phone-gutter);
+  }
+
+  .cell--hide-phone {
+    display: none !important;
+  }
+
+  // Define partial sizes for columnNumber < totalColumns.
+  @for $i from 1 through ($grid-phone-columns - 1) {
+    .cell--#{$i}-col {
+      @include partial-size($i, $grid-phone-columns, $grid-phone-gutter);
+    }
+
+    .cell--#{$i}-col-phone.cell--#{$i}-col-phone {
+      @include partial-size($i, $grid-phone-columns, $grid-phone-gutter);
+    }
+  }
+
+  // Define 100% for everything else.
+  @for $i from $grid-phone-columns through $grid-desktop-columns {
+    .cell--#{$i}-col {
+      @include full-size($grid-phone-gutter);
+    }
+
+    .cell--#{$i}-col-phone.cell--#{$i}-col-phone {
+      @include full-size($grid-phone-gutter);
+    }
+  }
+}
+
+
+////////// Tablet //////////
+
+@media (min-width: $grid-tablet-breakpoint) and (max-width: $grid-desktop-breakpoint - 1) {
+  .grid {
+    padding: $grid-tablet-margin - ($grid-tablet-gutter / 2);
+  }
+
+  .cell {
+    margin: $grid-tablet-gutter / 2;
+    @include partial-size($grid-cell-default-columns, $grid-tablet-columns,
+        $grid-tablet-gutter);
+  }
+
+  .cell--hide-tablet {
+    display: none !important;
+  }
+
+  // Define partial sizes for columnNumber < totalColumns.
+  @for $i from 1 through ($grid-tablet-columns - 1) {
+    .cell--#{$i}-col {
+      @include partial-size($i, $grid-tablet-columns, $grid-tablet-gutter);
+    }
+
+    .cell--#{$i}-col-tablet.cell--#{$i}-col-tablet {
+      @include partial-size($i, $grid-tablet-columns, $grid-tablet-gutter);
+    }
+  }
+
+  // Define 100% for everything else.
+  @for $i from $grid-tablet-columns through $grid-desktop-columns {
+    .cell--#{$i}-col {
+      @include full-size($grid-tablet-gutter);
+    }
+
+    .cell--#{$i}-col-tablet.cell--#{$i}-col-tablet {
+      @include full-size($grid-tablet-gutter);
+    }
+  }
+}
+
+
+////////// Desktop //////////
+
+@media (min-width: $grid-desktop-breakpoint) {
+  .grid {
+    padding: $grid-desktop-margin - ($grid-desktop-gutter / 2);
+  }
+
+  .cell {
+    margin: $grid-desktop-gutter / 2;
+    @include partial-size($grid-cell-default-columns, $grid-desktop-columns,
+        $grid-desktop-gutter);
+  }
+
+  .cell--hide-desktop {
+    display: none !important;
+  }
+
+  // Define partial sizes for all numbers of columns.
+  @for $i from 1 through $grid-desktop-columns {
+    .cell--#{$i}-col {
+      @include partial-size($i, $grid-desktop-columns, $grid-desktop-gutter);
+    }
+
+    .cell--#{$i}-col-desktop.cell--#{$i}-col-desktop {
+      @include partial-size($i, $grid-desktop-columns, $grid-desktop-gutter);
+    }
+  }
+}

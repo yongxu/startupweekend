@@ -1,0 +1,153 @@
+// Main layout class.
+.layout {
+  width: 100%;
+  // display: flex;
+  // flex-direction: column;
+  // overflow-y: auto;
+  // overflow-x: auto;
+  // -webkit-overflow-scrolling: touch;
+
+}
+
+// Utility classes for screen sizes.
+.layout.is-small-screen .layout--large-screen-only {
+  display: none;
+}
+
+.layout:not(.is-small-screen) .layout--small-screen-only {
+  display: none;
+}
+
+  // Optional utility classes for formatting special blocks in this component.
+  .layout-title {
+    display: block;
+    position: relative;
+    margin-right: 16px;
+
+    @include typo-title();
+    font-weight: 400;
+    box-sizing: border-box;
+  }
+
+  .layout-spacer {
+    flex-grow: 1;
+  }
+
+
+  // Drawer button.
+  .layout__drawer-button {
+    display: block;
+
+    position: absolute;
+    height: $layout-drawer-button-desktop-size;
+    width: $layout-drawer-button-desktop-size;
+    border: 0;
+
+    flex-shrink: 0;
+
+    overflow: hidden;
+    text-align: center;
+    cursor: pointer;
+    font-size: 26px;
+    line-height: $layout-drawer-button-desktop-size + 2;
+    font-family: Helvetica, Arial, sans-serif;
+    margin: 10px 12px;
+    top: 0;
+    left: 0;
+    color: $layout-header-text-color;
+
+    z-index: 4;
+
+    .layout__header & {
+      position: absolute;
+      color: $layout-header-text-color;
+      background-color: inherit;
+
+      @media screen and (max-width: $layout-screen-size-threshold) {
+        margin: 4px;
+      }
+    }
+
+    @media screen and (max-width: $layout-screen-size-threshold) {
+      margin: 4px;
+      color: rgba(0, 0, 0, 0.5);
+    }
+  }
+
+.layout__header {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  overflow: hidden;
+
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  min-height: $layout-desktop-header-height;
+  max-height: 1000px;
+  z-index: 100;
+
+  background-color: $layout-header-bg-color;
+  color: $layout-header-text-color;
+
+  @include shadow-2dp();
+  @include material-animation-default();
+  transition-property: max-height, box-shadow;
+
+  @media screen and (max-width: $layout-screen-size-threshold) {
+    min-height: $layout-mobile-header-height;
+  }
+}
+
+    .layout__header-row {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      flex-shrink: 0;
+      box-sizing: border-box;
+      align-self: stretch;
+      align-items: center;
+      height: $layout-header-desktop-row-height;
+      margin: 0;
+      padding: 0 $layout-header-desktop-indent 0 $layout-header-desktop-baseline;
+
+      @media screen and (max-width: $layout-screen-size-threshold) {
+        height: $layout-header-mobile-row-height;
+        padding: 0 $layout-header-mobile-indent 0 $layout-header-mobile-baseline;
+      }
+
+      & > * {
+        flex-shrink: 0;
+      }
+
+    }
+
+  // Content.
+  .layout__content {
+    // Fix IE10 bug.
+    -ms-flex: 0 1 auto;
+
+    display: inline-block;
+    overflow-y: auto;
+    overflow-x: hidden;
+    flex-grow: 1;
+    z-index: 1;
+    -webkit-overflow-scrolling: touch;
+
+    .layout__container.has-scrolling-header & {
+      overflow: visible;
+    }
+
+    @media screen and (max-width: $layout-screen-size-threshold) {
+
+      .layout__container.has-scrolling-header & {
+        overflow-y: auto;
+        overflow-x: hidden;
+      }
+    }
+  }
+

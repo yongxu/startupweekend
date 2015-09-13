@@ -1,0 +1,57 @@
+.new-event{
+    padding: 0 0;
+}
+
+
+.new-event__form{
+    padding: 10px 56px 40px 56px;
+
+    h6 {
+        margin-bottom: 0px;
+        color: get-color($color-accent);
+        border-bottom: 2px solid get-color($palette-blue-grey-200);
+    }
+}
+
+.new-event__input--name{
+//    max-width: 440px;
+}
+
+.new-event__container{
+	display: flex;
+	flex-flow: row wrap;
+}
+
+.new-event__timepicker{
+    padding-top: 1.5em;
+}
+
+.new-event__timepicker_button{
+    display: flex;
+    width: 100%;
+    justify-content: right;
+}
+
+.new-event-svg-header{
+    width: 100%;
+    top: 0;
+}
+
+.new-event__locationpicker{
+    width: 100%;
+
+	h6{
+		margin-bottom: 2px;
+	}
+    .picker{
+    	width: 100%;
+		height: 500px;
+		margin-top: 16px;
+    }
+
+	.buttons{
+		display: flex;
+		flex-grow: 1;
+		justify-content: space-around;
+	}
+}
