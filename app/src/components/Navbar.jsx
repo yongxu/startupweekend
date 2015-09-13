@@ -2,7 +2,7 @@
 
 import React from 'react';
 import {
-  Navigation, State, Link
+  History, State, Link
 } from 'react-router';
 import {
   SideNav, SideNavItem, SideNavHeader, SideNavDivider, SideNavSubheader
@@ -14,13 +14,13 @@ import Headroom from '../libs/headroom';
 let Navbar = React.createClass({
 
   mixins: [
-    Navigation, State
+    History, State
   ],
 
   render() {
 
-		let hideNavbar = this.props.hidden || this.isActive("/login");
-		let hideNewEventBtn = this.isActive('/newevent');
+    let hideNavbar = this.props.hidden || this.history.isActive("/login");
+    let hideNewEventBtn = this.history.isActive('/newevent');
 
     return (
       <div hidden={hideNavbar}>
@@ -33,7 +33,7 @@ let Navbar = React.createClass({
               <span className="navbar-mobile-title layout-title">REACTOR</span>
               {hideNewEventBtn
                 ? null
-                :(<RaisedButton label="New Event" onTouchTap={() => this.transitionTo("/newevent")} primary={true}/>)}
+                :(<RaisedButton label="New Event" onTouchTap={() => this.history.pushState(null,"/newevent")} primary={true}/>)}
               <div className="layout-spacer"></div>
 
               <div className='navbar-link_container'>
@@ -55,9 +55,9 @@ let Navbar = React.createClass({
               Reactor
             </div>
           </SideNavHeader>
-          <SideNavItem active={this.isActive('/home')} onTouchTap={() => this.transitionTo("/")} primaryText="Home"/>
-          <SideNavItem active={this.isActive('/events')} onTouchTap={() => this.transitionTo("/events")} primaryText="Events"/>
-          <SideNavItem active={this.isActive('/map')} onTouchTap={() => this.transitionTo("/map")} primaryText="Map"/>
+          <SideNavItem active={this.history.isActive('/home')} onTouchTap={() => this.history.pushState(null,"/")} primaryText="Home"/>
+          <SideNavItem active={this.history.isActive('/events')} onTouchTap={() => this.history.pushState(null,"/events")} primaryText="Events"/>
+          <SideNavItem active={this.history.isActive('/map')} onTouchTap={() => this.history.pushState(null,"/map")} primaryText="Map"/>
           <SideNavDivider/>
           <SideNavSubheader>
             Resources

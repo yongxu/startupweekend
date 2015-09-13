@@ -13,6 +13,9 @@ import {
   Router, Route, Redirect, Link
 } from 'react-router';
 
+import createBrowserHistory from 'history/lib/createBrowserHistory'
+let history = createBrowserHistory()
+
 /*material-ui*/
 import muiTheme from './utils/theme';
 
@@ -50,16 +53,16 @@ class App extends React.Component {
     );
   }
 }
-function requireAuth(nextState, redirectTo) {
+function requireAuth(nextState, replaceState) {
   if (!Parse.User.current())
-    redirectTo('/login', null, {
+    replaceState({
       nextPathname: nextState.location.pathname
-    });
+    },'/login');
 }
 
 let router = (
   <Router>
-    <Route component={App}>
+    <Route history={history} component={App}>
       <Route component={Home} name="home" path="/home"/>
       <Route component={Events} name="events" path="/events"/>
       <Route component={MapView} name="map" path="/map"/>

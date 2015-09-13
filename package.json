@@ -71,6 +71,7 @@
     "material-ui": "git+https://github.com/yongxu/material-ui.git",
     "moment": "^2.10.3",
     "react": "^0.13.3",
+    "history": "^1.9.0",
     "react-redux": "^2.1.1",
     "react-router": "^1.0.0-beta4",
     "react-tap-event-plugin": "^0.1.7",
